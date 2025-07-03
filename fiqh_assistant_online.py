@@ -4,7 +4,8 @@ from difflib import SequenceMatcher
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain.agents import initialize_agent, Tool
 from langchain.chat_models import ChatOpenAI
-
+import os
+from langchain_openai import ChatOpenAI
 # إعداد الصفحة
 st.set_page_config(page_title="المساعد الفقهي الذكي", layout="wide")
 st.title("🕌 المساعد الفقهي الذكي - بحث داخلي + عبر الإنترنت")
@@ -28,8 +29,11 @@ def search_in_json(query):
 
 # أدوات الذكاء الاصطناعي
 search = DuckDuckGoSearchRun()
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")  # يتطلب مفتاح OpenAI API
-
+llm = ChatOpenAI(
+    temperature=0,
+    model="gpt-3.5-turbo",
+    openai_api_key=os.environ.get("OPENAI_API_KEY")
+)
 tools = [
     Tool(name="Web Search", func=search.run, description="البحث عن معلومات فقهية من مواقع موثوقة")
 ]
