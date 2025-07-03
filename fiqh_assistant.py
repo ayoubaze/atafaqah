@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 # تحميل البيانات
-with open("fiqh_masail_20.json", "r", encoding="utf-8") as f:
+with open("fiqh_masail_expanded.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 st.title("المساعد الفقهي الذكي - مجاني")
