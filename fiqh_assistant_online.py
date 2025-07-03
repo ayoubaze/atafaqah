@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 from difflib import SequenceMatcher
-from langchain.tools import DuckDuckGoSearchRun
+from langchain_community.tools import DuckDuckGoSearchRun
 from langchain.agents import initialize_agent, Tool
 from langchain.chat_models import ChatOpenAI
 
